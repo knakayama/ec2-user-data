@@ -4,7 +4,7 @@
 sed -i 's/^Defaults    requiretty/Defaults:ec2-user    !requiretty/' "/etc/sudoers"
 ln -sf "/usr/share/zoneinfo/Asia/Tokyo" "/etc/localtime"
 sed -i -e 's@"UTC"@"Asia/Tokyo"@' -e 's/true/false/' "/etc/sysconfig/clock"
-sed -i 's/localhost\.localdomain/$HOST_NAME/' "/etc/sysconfig/network"
+sed -i "s/localhost\.localdomain/$HOST_NAME/" "/etc/sysconfig/network"
 hostname "$HOST_NAME"
 mkdir -p "/etc/chef/ohai/hints"
 touch "/etc/chef/ohai/hints/ec2.json"
