@@ -8,6 +8,8 @@ sed -i "s/localhost\.localdomain/$HOST_NAME/" "/etc/sysconfig/network"
 hostname "$HOST_NAME"
 mkdir -p "/etc/chef/ohai/hints"
 touch "/etc/chef/ohai/hints/ec2.json"
+sed -i 's/#Port 22/Port 65467/' "/etc/ssh/sshd_config"
+service sshd restart
 yum -y update
 service sendmail stop
 chkconfig sendmail off
