@@ -1,6 +1,15 @@
 #!/bin/bash -ex
 
-HOSTNAME="$1"
+{
+while getops :n: opt_parser; do
+    case "$opt_parser" in
+        n)
+            HOSTNAME="$OPTARG"
+            ;;
+        *)
+            ;;
+    esac
+done
 
 sed -i 's/^Defaults    requiretty/Defaults:ec2-user    !requiretty/' "/etc/sudoers"
 ln -sf "/usr/share/zoneinfo/Asia/Tokyo" "/etc/localtime"
@@ -17,4 +26,5 @@ yum install -y postfix
 yum remove -y sendmail
 service postfix start
 chkconfig postfix on
+} | tee -a "/root/install.log"
 
