@@ -17,7 +17,7 @@ mkdir -p "/etc/chef/ohai/hints"
 touch "/etc/chef/ohai/hints/ec2.json"
 
 # change ssh port
-sed -i 's/#Port 22/Port 65467/' "/etc/ssh/sshd_config"
+sed -i "s/#Port 22/Port $PORT/" "/etc/ssh/sshd_config"
 service sshd restart
 
 # update
