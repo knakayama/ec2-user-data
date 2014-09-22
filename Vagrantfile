@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         aws.elastic_ip        = ENV["ELASTIC_IP"]
         aws.user_data         = <<EOT
 #!/bin/sh
-export HOST_NAME=#{ENV['HOSTNAME']}
+export HOST_NAME=#{ENV['HOST_NAME']}
 export PORT=#{ENV['PORT']}
 curl -L https://raw.githubusercontent.com/knakayama/user-data/master/user-data.sh | bash
 EOT
