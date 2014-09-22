@@ -1,21 +1,11 @@
 ec2 user data
 =============
 
-## usage
+## Usage
 
-If you use vagrant, add this line:
+See [Vagrantfile](https://github.com/knakayama/ec2-user-data/blob/master/Vagrantfile).
 
-```shell
-# change ssh port
-override.ssh.port = 65467
+## License
 
-# use user-data
-aws.user_data = <<EOT
-#!/bin/sh
-export HOST_NAME=#{ENV['HOSTNAME']}
-curl -L https://raw.githubusercontent.com/knakayama/user-data/master/user-data.sh | bash
-EOT
-```
-
-or edit `#{ENV['HOSTNAME']}`.
+[MIT](https://github.com/knakayama/ec2-user-data/blob/master/LICENSE)
 
