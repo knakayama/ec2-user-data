@@ -3,7 +3,7 @@
 {
 # change sudoer
 if cat "/etc/issue" | grep -qF 'Ubuntu'; then
-    echo "Defaults:ec2-user    !requiretty" >> "/etc/sudoers.d/90-cloud-init-users"
+    echo "Defaults:ubuntu    !requiretty" >> "/etc/sudoers.d/90-cloud-init-users"
 else
     sed -i 's/^Defaults    requiretty/Defaults:ec2-user    !requiretty/' "/etc/sudoers"
 fi
