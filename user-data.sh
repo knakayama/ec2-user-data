@@ -17,6 +17,7 @@ fi
 # change hostname
 if cat "/etc/issue" | grep -qF 'Ubuntu'; then
     echo "$HOST_NAME" > "/etc/hostname"
+    sed -i "s/loalhost\$/${HOST_NAME}/" "/etc/hosts"
 else
     sed -i "s/localhost\.localdomain/$HOST_NAME/" "/etc/sysconfig/network"
 fi
