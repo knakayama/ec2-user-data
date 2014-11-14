@@ -10,7 +10,7 @@ fi
 
 # use JST
 ln -sf "/usr/share/zoneinfo/Asia/Tokyo" "/etc/localtime"
-if ! cat "/etc/issue" | grep -qF 'Ubuntu'; then
+if cat "/etc/issue" | grep -qF 'Amazon Linux AMI'; then
     sed -i -e 's@"UTC"@"Asia/Tokyo"@' -e 's/true/false/' "/etc/sysconfig/clock"
 fi
 
@@ -49,7 +49,7 @@ else
 fi
 
 # change mta to postfix
-if ! cat "/etc/issue" | grep -qF 'Ubuntu'; then
+if cat "/etc/issue" | grep -qF 'Amazon Linux AMI'; then
     service sendmail stop
     chkconfig sendmail off
     yum install -y postfix
