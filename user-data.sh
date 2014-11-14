@@ -35,6 +35,11 @@ else
     service sshd restart
 fi
 
+# change apt sources
+if grep -qF 'Ubuntu' "/etc/issue" -a grep -qF 'us.archive.ubuntu.com' "/etc/apt/sources.list"; then
+    sed -i 's@http://us\.archive\.ubuntu\.com\/ubuntu@http://jp\.archive\.ubuntu\.com/ubuntu@' "/etc/apt/sources.list"
+fi
+
 # update
 if cat "/etc/issue" | grep -qF 'Ubuntu'; then
     apt-get update -y
